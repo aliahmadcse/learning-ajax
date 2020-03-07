@@ -1,7 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Ajax Zip Code</title>
     <style>
       #entry {
@@ -13,29 +13,24 @@
     </style>
   </head>
   <body>
-
     <div id="entry">
       Zip code: <input id="zipcode" type="text" name="zipcode" />
       <button id="ajax-button" type="button">Submit</button>
     </div>
 
-    <div id="location">
-    </div>
+    <div id="location"></div>
 
     <script>
       // Google asks for all API users to sign up for an API key
       // For simple tests, still works without an API key
-      var api = 'http://maps.googleapis.com/maps/api/geocode/json';
+      var api = "http://maps.googleapis.com/maps/api/geocode/json";
 
-      function findLocation() {
-      }
+      function findLocation() {}
 
-      function outputLocation(data) {
-      }
+      function outputLocation(data) {}
 
-      var button = document.getElementById ("ajax-button");
+      var button = document.getElementById("ajax-button");
       button.addEventListener("click", findLocation);
     </script>
-
   </body>
 </html>

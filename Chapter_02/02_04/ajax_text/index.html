@@ -12,7 +12,17 @@
     <button id="ajax-button" type="button">Update content with Ajax</button>
 
     <script>
-      function replaceText() {}
+      function replaceText() {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "new_content.txt", true);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("main").innerHTML = xhr.responseText;
+          }
+        };
+        xhr.send();
+
+      }
 
       var button = document.getElementById("ajax-button");
       button.addEventListener("click", replaceText);
