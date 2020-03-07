@@ -1,1 +1,0 @@
-This text is loaded by ajax
