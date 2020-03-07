@@ -25,9 +25,33 @@
       // For simple tests, still works without an API key
       var api = "http://maps.googleapis.com/maps/api/geocode/json";
 
-      function findLocation() {}
+      function findLocation() {
+        let zipCode = document.getElementById("zipcode");
+        let url = api + "?address=" + zipCode.value;
 
-      function outputLocation(data) {}
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState < 4) {
+            showLoading();
+          }
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            outputLocation(xhr.responseText);
+          }
+        };
+        xhr.send();
+      }
+
+      function showLoading() {
+        document.getElementById("location").innerHTML = "Loading";
+      }
+
+      function outputLocation(data) {
+       let json=json.pa
+        document.getElementById("location").innerHTML = data;
+
+      }
 
       var button = document.getElementById("ajax-button");
       button.addEventListener("click", findLocation);
