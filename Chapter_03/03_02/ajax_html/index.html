@@ -1,11 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Ajax Text</title>
   </head>
   <body>
-
     <div id="main">
       This is the original text when the page first loads.
     </div>
@@ -16,22 +15,21 @@
       function replaceText() {
         var target = document.getElementById("main");
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'new_content.php', true);
-        xhr.onreadystatechange = function () {
-          console.log('readyState: ' + xhr.readyState);
-          if(xhr.readyState == 2) {
-            target.innerHTML = 'Loading...';
+        xhr.open("GET", "new_content.php", true);
+        xhr.onreadystatechange = function() {
+          console.log("readyState: " + xhr.readyState);
+          if (xhr.readyState == 2) {
+            target.innerHTML = "Loading...";
           }
-          if(xhr.readyState == 4 && xhr.status == 200) {
+          if (xhr.readyState == 4 && xhr.status == 200) {
             target.innerHTML = xhr.responseText;
           }
-        }
+        };
         xhr.send();
       }
 
-      var button = document.getElementById ("ajax-button");
+      var button = document.getElementById("ajax-button");
       button.addEventListener("click", replaceText);
     </script>
-
   </body>
 </html>
