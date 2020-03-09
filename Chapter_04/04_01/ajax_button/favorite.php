@@ -14,6 +14,10 @@
   if(!is_ajax_request()) { exit; }
 
   // extract $id
+  $raw_id = isset($_POST['id']) ? $_POST['id'] : '';
+
+  echo $raw_id;
+  
   // store in $_SESSION['favorites']
   // return true/false
 
