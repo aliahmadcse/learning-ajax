@@ -30,14 +30,16 @@ $categories = [
   ]
 ];
 
-  $category_id = isset($_GET['category_id']) ? (int) $_GET['category_id'] : 0;
+$category_id = isset($_GET['category_id']) ? (int) $_GET['category_id'] : 0;
 
-  foreach($categories as $category) {
-    if($category['id'] == $category_id) {
+foreach ($categories as $category) {
+  if ($category['id'] == $category_id) {
+    $subcategories = $category['subcategories'];
 
-      // Code when this id matched requested id
-
+    foreach ($subcategories as $subcategory) {
+      echo "<option value=\"{$subcategory['id']}\">";
+      echo $subcategory['name'];
+      echo "</option>";
     }
   }
-
-?>
+}
