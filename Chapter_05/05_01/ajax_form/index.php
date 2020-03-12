@@ -8,6 +8,10 @@
     #result {
       display: none;
     }
+
+    .error {
+      border: 1px solid red;
+    }
   </style>
 </head>
 
@@ -35,8 +39,26 @@
     var result_div = document.getElementById("result");
     var volume = document.getElementById("volume");
 
-    function postResult(value) {
-      volume.innerHTML = value;
+    const displayErrors = (errors) => {
+
+      const inputs = document.getElementsByTagName('input');
+      for (let i = 0; i < inputs.length; i++) {
+        const input = inputs[i];
+        if (errors.indexOf(input.name) >= 0) {
+          input.classList.add('error');
+        }
+      }
+    }
+
+    const clearErrors = () => {
+      const inputs = document.getElementsByTagName('input');
+      for (let i = 0; i < inputs.length; i++) {
+        inputs[i].classList.remove('error');
+      }
+    }
+
+    function postResult(result) {
+      volume.innerHTML = result;
       result_div.style.display = 'block';
     }
 
@@ -57,15 +79,16 @@
 
     function calculateMeasurements() {
       clearResult();
+      clearErrors();
       var form = document.getElementById("measurement-form");
       // determine form action
       var action = form.getAttribute('action');
       // gather form data
       var form_data = new FormData(form);
 
-      for ([key, value] of form_data.entries()) {
-        console.log(`${key}=${value}`);
-      }
+      // for ([key, value] of form_data.entries()) {
+      //   console.log(`${key}=${value}`);
+      // }
 
       var xhr = new XMLHttpRequest();
       xhr.open('POST', action, true);
@@ -76,8 +99,12 @@
         if (xhr.readyState == 4 && xhr.status == 200) {
           var result = xhr.responseText;
           let json = JSON.parse(result);
-          console.log('Result: ' + json);
-          // postResult(result);
+
+          if (json.hasOwnProperty('errors') && json.errors.length > 0) {
+            displayErrors(json.errors);
+          } else {
+            postResult(json.volume);
+          }
         }
       };
       xhr.send(form_data);

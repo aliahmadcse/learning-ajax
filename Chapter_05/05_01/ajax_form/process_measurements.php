@@ -20,7 +20,7 @@ if ($width == '') {
   $errors[] = 'width';
 };
 if ($height == '') {
-  $height[] = 'length';
+  $errors[] = 'height';
 };
 
 if (!empty($errors)) {
