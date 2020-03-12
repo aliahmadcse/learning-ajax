@@ -62,7 +62,8 @@
       var action = form.getAttribute('action');
       // gather form data
       var form_data = new FormData(form);
-      for ([key,value] of form_data.entries()){
+
+      for (key,value of form_data.entries()) {
         console.log(`${key}=${value}`);
       }
       var xhr = new XMLHttpRequest();
