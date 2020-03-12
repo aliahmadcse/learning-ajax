@@ -63,9 +63,10 @@
       // gather form data
       var form_data = new FormData(form);
 
-      for (key,value of form_data.entries()) {
+      for ([key, value] of form_data.entries()) {
         console.log(`${key}=${value}`);
       }
+
       var xhr = new XMLHttpRequest();
       xhr.open('POST', action, true);
       // do not set with FormData
@@ -74,8 +75,9 @@
       xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
           var result = xhr.responseText;
-          console.log('Result: ' + result);
-          postResult(result);
+          let json = JSON.parse(result);
+          console.log('Result: ' + json);
+          // postResult(result);
         }
       };
       xhr.send(form_data);
