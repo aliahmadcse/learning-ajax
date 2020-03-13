@@ -5,7 +5,17 @@ document.addEventListener("DOMContentLoaded", function() {
   var search = document.getElementById("search");
 
   function showSuggestions(json) {
+    const li_list = suggestionsToList(json);
+    suggestions.innerHTML = li_list;
     suggestions.style.display = "block";
+  }
+
+  function suggestionsToList(items) {
+    let output = "";
+    items.forEach(element => {
+      output += `<li><a href="search.php?q=${element}">${element}</a></li>`;
+    });
+    return output;
   }
 
   function getSuggestions() {
@@ -23,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("Result: " + result);
         // result = "{}";
         var json = JSON.parse(result);
+        // console.log(json);
         showSuggestions(json);
       }
     };
