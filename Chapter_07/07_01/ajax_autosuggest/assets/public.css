@@ -59,7 +59,7 @@ ul#suggestions {
   display: none;
 }
 
-ul#suggestions li {}
+/* ul#suggestions li {} */
 
 ul#suggestions li a {
   display: block;
