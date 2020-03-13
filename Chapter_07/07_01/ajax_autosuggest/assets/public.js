@@ -4,7 +4,9 @@ document.addEventListener("DOMContentLoaded", function() {
   var form = document.getElementById("search-form");
   var search = document.getElementById("search");
 
-  function showSuggestions(json) {}
+  function showSuggestions(json) {
+    suggestions.style.display = "block";
+  }
 
   function getSuggestions() {
     var q = search.value;

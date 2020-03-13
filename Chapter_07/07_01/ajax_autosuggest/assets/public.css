@@ -1,5 +1,6 @@
 /* General styles */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -11,7 +12,8 @@ html, body {
   width: 1080px;
 }
 
-#header, #footer {
+#header,
+#footer {
   height: 30px;
   width: 100%;
   background: #30395C;
@@ -28,11 +30,13 @@ html, body {
 #navigation {
   float: left;
 }
+
 #navigation a {
   font-size: 20px;
   color: #FFF;
   text-decoration: none;
 }
+
 #navigation a:hover {
   color: #DDF1FF;
 }
@@ -47,3 +51,25 @@ input#search {
 
 
 /* Auto-suggest styles */
+ul#suggestions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 208px;
+  display: none;
+}
+
+ul#suggestions li {}
+
+ul#suggestions li a {
+  display: block;
+  min-height: 1em;
+  padding: 0.5rem 10px;
+  background: #ccc;
+  color: #000;
+  text-decoration: none;
+}
+
+ul#suggestions li a:hover {
+  background: #aaa;
+}
